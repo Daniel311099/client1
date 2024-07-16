@@ -1,9 +1,13 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+DATABASE_URL = os.getenv('DATABASE_URL')
 # Database connection setup
-DATABASE_URL = "postgresql://postgres:Daniel1212@localhost:5432/app"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

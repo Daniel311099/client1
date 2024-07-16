@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { api } from "~/trpc/react";
@@ -6,7 +6,7 @@ import { useFetchData } from "../hooks";
 import { Post } from "@prisma/client";
 import { useSession, signIn } from "next-auth/react";
 
-type propTypes = {
+export type propTypes = {
     props: {
         noPostsText: string;
         recentPostText: string;
