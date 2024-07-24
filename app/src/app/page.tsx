@@ -54,27 +54,59 @@ type Props = {
   linkTextColor: string;
 };
 
-export default async function Home({
-  greetingText,
-  mainBgGradient,
-  titleText,
-  titleHighlightColor,
-  links,
-  signInText,
-  signOutText,
-  loggedInText,
-  linkBgColor,
-  linkHoverBgColor,
-  linkTextColor,
-}: Props) {
+const defaultProps = {
+  greetingText: "Loading tRPC query...",
+  mainBgGradient: "bg-gradient-to-b from-[#2e026d] to-[#15162c]",
+  titleText: "Create",
+  titleHighlightColor: "hsl(280,100%,70%)",
+  signInText: "Sign in",
+  signOutText: "Sign out",
+  loggedInText: "Logged in as",
+  linkBgColor: "bg-white/10",
+  linkHoverBgColor: "hover:bg-white/20",
+  linkTextColor: "text-white",
+  links: [
+    {
+      href: "https://create.t3.gg/en/usage/first-steps",
+      title: "First Steps",
+      description:
+        "Just the basics - Everything you need to know to set up your database and authentication.",
+    },
+    {
+      href: "https://create.t3.gg/en/introduction",
+      title: "Documentation",
+      description:
+        "Learn more about Create T3 App, the libraries it uses, and how to deploy it.",
+    },
+  ],
+};
+
+export default async function Home() {
+    
+  const {
+    greetingText,
+    mainBgGradient,
+    titleText,
+    titleHighlightColor,
+    links,
+    signInText,
+    signOutText,
+    loggedInText,
+    linkBgColor,
+    linkHoverBgColor,
+    linkTextColor,
+  } = defaultProps;
+
   const fetchFunction = async () => {
     const latestPost = (await api.post.getLatest()) as Post;
 
     const URL =
-      "https://client1-6sz4.onrender.com/user/" + session?.user.id + "/post_count";
-    console.log({URL})
+      "https://client1-6sz4.onrender.com/user/" +
+      session?.user.id +
+      "/post_count";
+    console.log({ URL });
     const count = await (await fetch(URL)).json();
-    console.log({count})
+    console.log({ count });
 
     return {
       props: {
@@ -153,30 +185,3 @@ export default async function Home({
     </HydrateClient>
   );
 }
-
-Home.defaultProps = {
-  greetingText: "Loading tRPC query...",
-  mainBgGradient: "bg-gradient-to-b from-[#2e026d] to-[#15162c]",
-  titleText: "Create",
-  titleHighlightColor: "hsl(280,100%,70%)",
-  signInText: "Sign in",
-  signOutText: "Sign out",
-  loggedInText: "Logged in as",
-  linkBgColor: "bg-white/10",
-  linkHoverBgColor: "hover:bg-white/20",
-  linkTextColor: "text-white",
-  links: [
-    {
-      href: "https://create.t3.gg/en/usage/first-steps",
-      title: "First Steps",
-      description:
-        "Just the basics - Everything you need to know to set up your database and authentication.",
-    },
-    {
-      href: "https://create.t3.gg/en/introduction",
-      title: "Documentation",
-      description:
-        "Learn more about Create T3 App, the libraries it uses, and how to deploy it.",
-    },
-  ],
-};
