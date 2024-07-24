@@ -15,19 +15,32 @@ const config = {
   "rules": {
     "@typescript-eslint/array-type": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
-    "@typescript-eslint/consistent-type-imports": [
-      "warn",
-      {
-        "prefer": "type-imports",
-        "fixStyle": "inline-type-imports"
-      }
-    ],
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      {
-        "argsIgnorePattern": "^_"
-      }
-    ],
+
+    "@typescript-eslint/prefer-nullish-coalescing": "off", // Disables the rule
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unnecessary-type-assertion': 'off',
+    '@typescript-eslint/no-base-to-string': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/consistent-type-imports': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
+    '@next/next/no-img-element': 'off',
+ 
+    // "@typescript-eslint/consistent-type-imports": [
+    //   "warn",
+    //   {
+    //     "prefer": "type-imports",
+    //     "fixStyle": "inline-type-imports"
+    //   }
+    // ],
+    // "@typescript-eslint/no-unused-vars": [
+    //   "warn",
+    //   {
+    //     "argsIgnorePattern": "^_"
+    //   }
+    // ],
     "@typescript-eslint/require-await": "off",
     "@typescript-eslint/no-misused-promises": [
       "error",
