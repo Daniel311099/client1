@@ -71,9 +71,10 @@ export default async function Home({
     const latestPost = (await api.post.getLatest()) as Post;
 
     const URL =
-      "http://127.0.0.1:5000/user/" + session?.user.id + "/post_count";
-
+      "https://client1-6sz4.onrender.com/user/" + session?.user.id + "/post_count";
+    console.log({URL})
     const count = await (await fetch(URL)).json();
+    console.log({count})
 
     return {
       props: {
@@ -96,7 +97,7 @@ export default async function Home({
 
   const props = await useFetchData({
     fetchFunction: wrap,
-    isTestMode: true,
+    isTestMode: false,
     testData,
   });
 
